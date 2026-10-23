@@ -53,22 +53,6 @@
     docEl.classList.add("no-webgl");
   }
 
-  /* ---------- pause-the-sky control ---------- */
-  var skyToggle = document.getElementById("sky-toggle");
-  var manualPaused = false;
-  if (skyToggle) {
-    if (!hasWebGL) skyToggle.hidden = true; /* nothing animates without the sky */
-    skyToggle.addEventListener("click", function () {
-      manualPaused = !manualPaused;
-      skyToggle.setAttribute("aria-pressed", String(manualPaused));
-      skyToggle.setAttribute("aria-label", manualPaused ? "Resume the sky animation" : "Pause the sky animation");
-      var pauseMark = skyToggle.querySelector(".mark-pause");
-      var playMark = skyToggle.querySelector(".mark-play");
-      if (pauseMark) pauseMark.hidden = manualPaused;
-      if (playMark) playMark.hidden = !manualPaused;
-    });
-  }
-
   /* ---------- lightweight reveal choreography (GSAP optional) ---------- */
   var revealEls = document.querySelectorAll("[data-reveal]");
   var gsapReady = typeof window.gsap !== "undefined" && typeof window.ScrollTrigger !== "undefined";
@@ -486,7 +470,7 @@
     var rafId = 0;
     function rafLoop() {
       rafId = requestAnimationFrame(rafLoop);
-      if (!paused && !manualPaused) tick();
+      if (!paused) tick();
     }
     rafLoop();
 

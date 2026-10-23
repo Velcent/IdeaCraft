@@ -145,28 +145,6 @@ canvas:focus-visible { outline-offset: -2px; }
 }
 .topnav a:hover { color: var(--ink); text-decoration: underline; text-decoration-color: var(--spark); text-decoration-thickness: 2px; text-underline-offset: 5px; }
 
-/* pause / resume the sky */
-.sky-toggle {
-  width: 44px;
-  height: 44px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: 0.4rem;
-  padding: 0;
-  background: transparent;
-  color: var(--ink-2);
-  border: 1.5px solid var(--hairline);
-  border-radius: 10px;
-  cursor: pointer;
-  touch-action: manipulation;
-  transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
-}
-.sky-toggle:hover { background: var(--ink); color: var(--on-ink); border-color: var(--ink); }
-.sky-toggle[aria-pressed="true"] { background: var(--paper-2); }
-.sky-toggle svg { width: 20px; height: 20px; }
-.sky-toggle svg[hidden] { display: none; }
-
 .gh-mark { width: 17px; height: 17px; margin-right: 0.45rem; }
 
 /* ---------- hero ---------- */
@@ -588,7 +566,7 @@ html.js [data-reveal] {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   html.js [data-reveal] { opacity: 1; transform: none; }
-  .btn, .copy-btn, .skip-link, .sky-toggle, .page-note { transition: none; }
+  .btn, .copy-btn, .skip-link, .page-note { transition: none; }
   .terminal-body code::after { animation: none; }
 }
 
