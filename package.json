@@ -1,0 +1,17 @@
+{
+  "name": "ideacraft-build",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Build, test and release tooling for the IdeaCraft desktop app (the shippable npm package lives in ./npm).",
+  "type": "commonjs",
+  "scripts": {
+    "build": "tauri build",
+    "smoke": "node tests/smoke.js",
+    "latest-json": "node scripts/make-latest-json.js"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.12.4",
+    "playwright-core": "^1.64.1"
+  }
+}

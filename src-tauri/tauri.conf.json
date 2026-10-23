@@ -1,0 +1,66 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "IdeaCraft",
+  "version": "1.0.0",
+  "identifier": "com.ideacraft.app.desktop",
+  "build": {
+    "frontendDist": "../ui",
+    "devUrl": "http://127.0.0.1:8123"
+  },
+  "app": {
+    "withGlobalTauri": true,
+    "windows": [
+      {
+        "label": "main",
+        "title": "IdeaCraft",
+        "width": 1280,
+        "height": 760,
+        "minWidth": 760,
+        "minHeight": 520,
+        "center": true,
+        "decorations": false,
+        "shadow": true,
+        "backgroundColor": "#FFFFFF",
+        "visible": false,
+        "resizable": true,
+        "zoomHotkeysEnabled": false,
+        "dragDropEnabled": false
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self'; img-src 'self' data: blob:; media-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; script-src 'self'; connect-src ipc: http://ipc.localhost",
+      "capabilities": ["default"]
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["nsis"],
+    "createUpdaterArtifacts": true,
+    "windows": {
+      "webviewInstallMode": { "type": "downloadBootstrapper" },
+      "nsis": {
+        "installMode": "currentUser",
+        "languages": ["English"]
+      }
+    },
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "copyright": "IdeaCraft",
+    "category": "Productivity",
+    "shortDescription": "IdeaCraft - a workspace for your ideas",
+    "longDescription": "IdeaCraft is a local-first workspace for notes, docs, projects and knowledge."
+  },
+  "plugins": {
+    "updater": {
+      "endpoints": [
+        "https://github.com/aamirenic/ideacraft/releases/latest/download/latest.json"
+      ],
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDcxM0I0MzAzRTczMkZFOUQKUldTZC9qTG5BME03Y2Zxa0szOVQ1TngyUHVHYno2SWFPbEhQTmdyNGVOWmMyVllJbE9tWURpL3oK"
+    }
+  }
+}

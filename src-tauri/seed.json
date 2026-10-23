@@ -1,0 +1,1096 @@
+{
+  "workspace": {
+    "id": "ws-ideacraft",
+    "name": "IdeaCraft",
+    "icon": "💡"
+  },
+  "pages": [
+    {
+      "id": "p-welcome",
+      "parentId": null,
+      "title": "Welcome to IdeaCraft",
+      "icon": "👋",
+      "cover": "gradient:7",
+      "coverType": "gradient",
+      "coverPosition": 50,
+      "position": 1,
+      "isFavorite": true,
+      "updatedAt": "2026-10-21T08:42:00.000Z"
+    },
+    {
+      "id": "p-todo",
+      "parentId": null,
+      "title": "To-Do List",
+      "icon": "✅",
+      "position": 2,
+      "type": "database",
+      "databaseId": "db-todo",
+      "isFavorite": true,
+      "updatedAt": "2026-10-21T07:15:00.000Z"
+    },
+    {
+      "id": "p-projects",
+      "parentId": null,
+      "title": "Projects",
+      "icon": "🚀",
+      "cover": "gradient:3",
+      "coverType": "gradient",
+      "coverPosition": 50,
+      "position": 3,
+      "type": "database",
+      "databaseId": "db-projects",
+      "isFavorite": true,
+      "updatedAt": "2026-10-20T18:20:00.000Z"
+    },
+    {
+      "id": "p-reading",
+      "parentId": null,
+      "title": "Reading List",
+      "icon": "📚",
+      "position": 4,
+      "type": "database",
+      "databaseId": "db-reading",
+      "updatedAt": "2026-10-19T12:00:00.000Z"
+    },
+    {
+      "id": "p-notes",
+      "parentId": null,
+      "title": "Quick Notes",
+      "icon": "📝",
+      "position": 5,
+      "updatedAt": "2026-10-21T06:30:00.000Z"
+    },
+    {
+      "id": "p-ideas",
+      "parentId": null,
+      "title": "Ideas",
+      "icon": "💡",
+      "position": 6,
+      "updatedAt": "2026-10-18T09:10:00.000Z"
+    },
+    {
+      "id": "p-whatsnew",
+      "parentId": "p-welcome",
+      "title": "What's new in IdeaCraft",
+      "icon": "✨",
+      "position": 1,
+      "updatedAt": "2026-10-20T10:00:00.000Z"
+    },
+    {
+      "id": "p-shortcuts",
+      "parentId": "p-welcome",
+      "title": "Keyboard shortcuts",
+      "icon": "⌨️",
+      "position": 2,
+      "updatedAt": "2026-10-17T14:00:00.000Z"
+    },
+    {
+      "id": "p-notes-today",
+      "parentId": "p-notes",
+      "title": "Today",
+      "icon": "☀️",
+      "position": 1,
+      "updatedAt": "2026-10-21T06:32:00.000Z"
+    },
+    {
+      "id": "p-row-todo-1",
+      "parentId": "p-todo",
+      "title": "Welcome to IdeaCraft",
+      "icon": null,
+      "position": 1,
+      "type": "row",
+      "databaseId": "db-todo",
+      "updatedAt": "2026-10-21T07:10:00.000Z"
+    },
+    {
+      "id": "p-row-todo-2",
+      "parentId": "p-todo",
+      "title": "Plan the week",
+      "icon": null,
+      "position": 2,
+      "type": "row",
+      "databaseId": "db-todo",
+      "updatedAt": "2026-10-21T07:12:00.000Z"
+    },
+    {
+      "id": "p-row-todo-3",
+      "parentId": "p-todo",
+      "title": "Try the board view",
+      "icon": null,
+      "position": 3,
+      "type": "row",
+      "databaseId": "db-todo",
+      "updatedAt": "2026-10-20T16:00:00.000Z"
+    },
+    {
+      "id": "p-row-todo-4",
+      "parentId": "p-todo",
+      "title": "Create a new database",
+      "icon": null,
+      "position": 4,
+      "type": "row",
+      "databaseId": "db-todo",
+      "updatedAt": "2026-10-20T15:00:00.000Z"
+    },
+    {
+      "id": "p-row-todo-5",
+      "parentId": "p-todo",
+      "title": "Set up local AI",
+      "icon": null,
+      "position": 5,
+      "type": "row",
+      "databaseId": "db-todo",
+      "updatedAt": "2026-10-19T11:00:00.000Z"
+    },
+    {
+      "id": "p-row-todo-6",
+      "parentId": "p-todo",
+      "title": "Export a page as Markdown",
+      "icon": null,
+      "position": 6,
+      "type": "row",
+      "databaseId": "db-todo",
+      "updatedAt": "2026-10-18T10:00:00.000Z"
+    },
+    {
+      "id": "p-row-proj-1",
+      "parentId": "p-projects",
+      "title": "IdeaCraft desktop",
+      "icon": "🛠️",
+      "position": 1,
+      "type": "row",
+      "databaseId": "db-projects",
+      "updatedAt": "2026-10-21T08:00:00.000Z"
+    },
+    {
+      "id": "p-row-proj-2",
+      "parentId": "p-projects",
+      "title": "Personal website",
+      "icon": "🌐",
+      "position": 2,
+      "type": "row",
+      "databaseId": "db-projects",
+      "updatedAt": "2026-10-19T13:00:00.000Z"
+    },
+    {
+      "id": "p-row-proj-3",
+      "parentId": "p-projects",
+      "title": "Reading habit",
+      "icon": "📖",
+      "position": 3,
+      "type": "row",
+      "databaseId": "db-projects",
+      "updatedAt": "2026-10-18T17:00:00.000Z"
+    },
+    {
+      "id": "p-row-proj-4",
+      "parentId": "p-projects",
+      "title": "Home automation",
+      "icon": "🏠",
+      "position": 4,
+      "type": "row",
+      "databaseId": "db-projects",
+      "updatedAt": "2026-10-16T09:00:00.000Z"
+    },
+    {
+      "id": "p-row-read-1",
+      "parentId": "p-reading",
+      "title": "The Design of Everyday Things",
+      "icon": "📕",
+      "position": 1,
+      "type": "row",
+      "databaseId": "db-reading",
+      "updatedAt": "2026-10-20T20:00:00.000Z"
+    },
+    {
+      "id": "p-row-read-2",
+      "parentId": "p-reading",
+      "title": "Thinking, Fast and Slow",
+      "icon": "📘",
+      "position": 2,
+      "type": "row",
+      "databaseId": "db-reading",
+      "updatedAt": "2026-10-19T21:00:00.000Z"
+    },
+    {
+      "id": "p-row-read-3",
+      "parentId": "p-reading",
+      "title": "The Pragmatic Programmer",
+      "icon": "📗",
+      "position": 3,
+      "type": "row",
+      "databaseId": "db-reading",
+      "updatedAt": "2026-10-16T20:00:00.000Z"
+    },
+    {
+      "id": "p-row-read-4",
+      "parentId": "p-reading",
+      "title": "Bird by Bird",
+      "icon": "📙",
+      "position": 4,
+      "type": "row",
+      "databaseId": "db-reading",
+      "updatedAt": "2026-10-15T20:00:00.000Z"
+    },
+    {
+      "id": "p-row-read-5",
+      "parentId": "p-reading",
+      "title": "A Pattern Language",
+      "icon": "📒",
+      "position": 5,
+      "type": "row",
+      "databaseId": "db-reading",
+      "updatedAt": "2026-10-14T20:00:00.000Z"
+    },
+    {
+      "id": "p-tpl-meeting",
+      "parentId": null,
+      "title": "Meeting Notes",
+      "icon": "🗓️",
+      "position": 1,
+      "isTemplate": true,
+      "updatedAt": "2026-10-01T00:00:00.000Z"
+    },
+    {
+      "id": "p-tpl-weekly",
+      "parentId": null,
+      "title": "Weekly Planner",
+      "icon": "📅",
+      "position": 2,
+      "isTemplate": true,
+      "updatedAt": "2026-10-01T00:00:00.000Z"
+    },
+    {
+      "id": "p-tpl-habit",
+      "parentId": null,
+      "title": "Habit Tracker",
+      "icon": "🌱",
+      "position": 3,
+      "isTemplate": true,
+      "updatedAt": "2026-10-01T00:00:00.000Z"
+    },
+    {
+      "id": "p-tpl-journal",
+      "parentId": null,
+      "title": "Journal",
+      "icon": "📓",
+      "position": 4,
+      "isTemplate": true,
+      "updatedAt": "2026-10-01T00:00:00.000Z"
+    },
+    {
+      "id": "p-tpl-project",
+      "parentId": null,
+      "title": "Project Brief",
+      "icon": "🧭",
+      "position": 5,
+      "isTemplate": true,
+      "updatedAt": "2026-10-01T00:00:00.000Z"
+    },
+    {
+      "id": "p-tpl-blank",
+      "parentId": null,
+      "title": "Blank Page",
+      "icon": "📄",
+      "position": 6,
+      "isTemplate": true,
+      "updatedAt": "2026-10-01T00:00:00.000Z"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "b-w1",
+      "pageId": "p-welcome",
+      "type": "callout",
+      "html": "<strong>Welcome to IdeaCraft</strong> — a local-first home for your notes, docs, and projects. Everything is stored on your computer.",
+      "text": "Welcome to IdeaCraft — a local-first home for your notes, docs, and projects. Everything is stored on your computer.",
+      "props": { "icon": "💡", "color": "yellow" },
+      "position": 1
+    },
+    {
+      "id": "b-w2",
+      "pageId": "p-welcome",
+      "type": "paragraph",
+      "html": "This page is a live playground. Click anywhere and start typing — or press <code>/</code> to see everything you can add.",
+      "text": "This page is a live playground. Click anywhere and start typing — or press / to see everything you can add.",
+      "position": 2
+    },
+    {
+      "id": "b-w3",
+      "pageId": "p-welcome",
+      "type": "heading1",
+      "html": "Get started",
+      "text": "Get started",
+      "position": 3
+    },
+    {
+      "id": "b-w4",
+      "pageId": "p-welcome",
+      "type": "to_do",
+      "html": "Open IdeaCraft",
+      "text": "Open IdeaCraft",
+      "props": { "checked": true },
+      "position": 4
+    },
+    {
+      "id": "b-w5",
+      "pageId": "p-welcome",
+      "type": "to_do",
+      "html": "Create your first page",
+      "text": "Create your first page",
+      "props": { "checked": false },
+      "position": 5
+    },
+    {
+      "id": "b-w6",
+      "pageId": "p-welcome",
+      "type": "to_do",
+      "html": "Press <code>/</code> to add any kind of block",
+      "text": "Press / to add any kind of block",
+      "props": { "checked": false },
+      "position": 6
+    },
+    {
+      "id": "b-w7",
+      "pageId": "p-welcome",
+      "type": "to_do",
+      "html": "Star a page to keep it in Favorites",
+      "text": "Star a page to keep it in Favorites",
+      "props": { "checked": false },
+      "position": 7
+    },
+    {
+      "id": "b-w8",
+      "pageId": "p-welcome",
+      "type": "heading2",
+      "html": "A canvas for every idea",
+      "text": "A canvas for every idea",
+      "position": 8
+    },
+    {
+      "id": "b-w9",
+      "pageId": "p-welcome",
+      "type": "paragraph",
+      "html": "Write with <strong>bold</strong>, <em>italics</em>, <u>underline</u>, <s>strikethrough</s>, <code>inline code</code> and <span style=\"color:#EB5757\">colors</span>. Everything you expect, right where you expect it.",
+      "text": "Write with bold, italics, underline, strikethrough, inline code and colors. Everything you expect, right where you expect it.",
+      "position": 9
+    },
+    {
+      "id": "b-w10",
+      "pageId": "p-welcome",
+      "type": "bulleted_list_item",
+      "html": "<strong>Docs &amp; notes</strong> — write without limits",
+      "text": "Docs & notes — write without limits",
+      "position": 10
+    },
+    {
+      "id": "b-w11",
+      "pageId": "p-welcome",
+      "type": "bulleted_list_item",
+      "html": "<strong>Wikis</strong> — collect knowledge in one place",
+      "text": "Wikis — collect knowledge in one place",
+      "position": 11
+    },
+    {
+      "id": "b-w12",
+      "pageId": "p-welcome",
+      "type": "bulleted_list_item",
+      "html": "<strong>Projects</strong> — plan, track and ship",
+      "text": "Projects — plan, track and ship",
+      "position": 12
+    },
+    {
+      "id": "b-w13",
+      "pageId": "p-welcome",
+      "type": "bulleted_list_item",
+      "html": "<strong>AI, locally</strong> — summarize and rewrite with Ollama",
+      "text": "AI, locally — summarize and rewrite with Ollama",
+      "position": 13
+    },
+    {
+      "id": "b-w14",
+      "pageId": "p-welcome",
+      "type": "quote",
+      "html": "The best way to get started is to start.",
+      "text": "The best way to get started is to start.",
+      "position": 14
+    },
+    {
+      "id": "b-w15",
+      "pageId": "p-welcome",
+      "type": "toggle",
+      "html": "What makes IdeaCraft different?",
+      "text": "What makes IdeaCraft different?",
+      "props": { "collapsed": false },
+      "position": 15
+    },
+    {
+      "id": "b-w16",
+      "pageId": "p-welcome",
+      "parentId": "b-w15",
+      "type": "paragraph",
+      "html": "IdeaCraft runs entirely on your device. No account, no server, no telemetry. Your workspace is a SQLite database that you own — and can back up, export or sync through any folder.",
+      "text": "IdeaCraft runs entirely on your device. No account, no server, no telemetry. Your workspace is a SQLite database that you own — and can back up, export or sync through any folder.",
+      "position": 16
+    },
+    {
+      "id": "b-w17",
+      "pageId": "p-welcome",
+      "type": "divider",
+      "html": "",
+      "text": "",
+      "position": 17
+    },
+    {
+      "id": "b-w18",
+      "pageId": "p-welcome",
+      "type": "heading2",
+      "html": "Try it yourself",
+      "text": "Try it yourself",
+      "position": 18
+    },
+    {
+      "id": "b-w19",
+      "pageId": "p-welcome",
+      "type": "page_link",
+      "html": "",
+      "text": "To-Do List",
+      "props": { "pageId": "p-todo" },
+      "position": 19
+    },
+    {
+      "id": "b-w20",
+      "pageId": "p-welcome",
+      "type": "page_link",
+      "html": "",
+      "text": "Projects",
+      "props": { "pageId": "p-projects" },
+      "position": 20
+    },
+    {
+      "id": "b-w21",
+      "pageId": "p-welcome",
+      "type": "page_link",
+      "html": "",
+      "text": "Reading List",
+      "props": { "pageId": "p-reading" },
+      "position": 21
+    },
+    {
+      "id": "b-w22",
+      "pageId": "p-welcome",
+      "type": "callout",
+      "html": "Press <strong>Ctrl+K</strong> to search everything, or <strong>Ctrl+N</strong> for a new page.",
+      "text": "Press Ctrl+K to search everything, or Ctrl+N for a new page.",
+      "props": { "icon": "⌨️", "color": "blue" },
+      "position": 22
+    },
+    {
+      "id": "b-w23",
+      "pageId": "p-welcome",
+      "type": "code",
+      "html": "const idea = &#39;anything&#39;;\nawait workspace.create(idea);",
+      "text": "const idea = 'anything';\nawait workspace.create(idea);",
+      "props": { "language": "javascript" },
+      "position": 23
+    },
+    {
+      "id": "b-w24",
+      "pageId": "p-welcome",
+      "type": "heading3",
+      "html": "A small tip",
+      "text": "A small tip",
+      "position": 24
+    },
+    {
+      "id": "b-w25",
+      "pageId": "p-welcome",
+      "type": "paragraph",
+      "html": "Hover a block to reveal its handle. Drag to reorder, click <code>⋮⋮</code> for actions, or type Markdown shortcuts like <code># </code>, <code>- </code> and <code>[] </code>.",
+      "text": "Hover a block to reveal its handle. Drag to reorder, click ⋮⋮ for actions, or type Markdown shortcuts like # , - and [] .",
+      "position": 25
+    },
+    {
+      "id": "b-n1",
+      "pageId": "p-whatsnew",
+      "type": "heading1",
+      "html": "What's new",
+      "text": "What's new",
+      "position": 1
+    },
+    {
+      "id": "b-n2",
+      "pageId": "p-whatsnew",
+      "type": "paragraph",
+      "html": "IdeaCraft 1.0 is the first release: a complete, local-first workspace with docs, databases, templates, AI and sync.",
+      "text": "IdeaCraft 1.0 is the first release: a complete, local-first workspace with docs, databases, templates, AI and sync.",
+      "position": 2
+    },
+    {
+      "id": "b-n3",
+      "pageId": "p-whatsnew",
+      "type": "heading2",
+      "html": "Highlights",
+      "text": "Highlights",
+      "position": 3
+    },
+    {
+      "id": "b-n4",
+      "pageId": "p-whatsnew",
+      "type": "bulleted_list_item",
+      "html": "A fast block editor with slash commands and Markdown shortcuts",
+      "text": "A fast block editor with slash commands and Markdown shortcuts",
+      "position": 4
+    },
+    {
+      "id": "b-n5",
+      "pageId": "p-whatsnew",
+      "type": "bulleted_list_item",
+      "html": "Databases with table, board, list, gallery and calendar views",
+      "text": "Databases with table, board, list, gallery and calendar views",
+      "position": 5
+    },
+    {
+      "id": "b-n6",
+      "pageId": "p-whatsnew",
+      "type": "bulleted_list_item",
+      "html": "Tabs, favorites, trash, comments, version history and full-text search",
+      "text": "Tabs, favorites, trash, comments, version history and full-text search",
+      "position": 6
+    },
+    {
+      "id": "b-n7",
+      "pageId": "p-whatsnew",
+      "type": "bulleted_list_item",
+      "html": "Optional local AI through Ollama, and folder-based sync through Google Drive, OneDrive or Dropbox",
+      "text": "Optional local AI through Ollama, and folder-based sync through Google Drive, OneDrive or Dropbox",
+      "position": 7
+    },
+    {
+      "id": "b-s1",
+      "pageId": "p-shortcuts",
+      "type": "heading1",
+      "html": "Keyboard shortcuts",
+      "text": "Keyboard shortcuts",
+      "position": 1
+    },
+    {
+      "id": "b-s2",
+      "pageId": "p-shortcuts",
+      "type": "table",
+      "html": "",
+      "text": "Action Shortcut",
+      "props": {
+        "header": true,
+        "rows": [
+          ["Action", "Shortcut"],
+          ["Search everything", "Ctrl + K"],
+          ["Quick find", "Ctrl + P"],
+          ["New page", "Ctrl + N"],
+          ["New tab", "Ctrl + T"],
+          ["Close tab", "Ctrl + W"],
+          ["Bold", "Ctrl + B"],
+          ["Italic", "Ctrl + I"],
+          ["Underline", "Ctrl + U"],
+          ["Toggle sidebar", "Ctrl + \\"],
+          ["Open settings", "Ctrl + ,"],
+          ["Go back / forward", "Alt + ← / →"],
+          ["Turn into plain text", "Ctrl + Shift + 0"]
+        ]
+      },
+      "position": 2
+    },
+    {
+      "id": "b-q1",
+      "pageId": "p-notes",
+      "type": "paragraph",
+      "html": "A scratchpad for everything that doesn't need a home yet.",
+      "text": "A scratchpad for everything that doesn't need a home yet.",
+      "position": 1
+    },
+    {
+      "id": "b-q2",
+      "pageId": "p-notes",
+      "type": "to_do",
+      "html": "Capture ideas before they disappear",
+      "text": "Capture ideas before they disappear",
+      "props": { "checked": false },
+      "position": 2
+    },
+    {
+      "id": "b-q3",
+      "pageId": "p-notes",
+      "type": "to_do",
+      "html": "Move the good ones into a real page",
+      "text": "Move the good ones into a real page",
+      "props": { "checked": false },
+      "position": 3
+    },
+    {
+      "id": "b-q4",
+      "pageId": "p-notes-today",
+      "type": "heading2",
+      "html": "Today",
+      "text": "Today",
+      "position": 1
+    },
+    {
+      "id": "b-q5",
+      "pageId": "p-notes-today",
+      "type": "paragraph",
+      "html": "What is one thing that would make today feel complete?",
+      "text": "What is one thing that would make today feel complete?",
+      "position": 2
+    },
+    {
+      "id": "b-q6",
+      "pageId": "p-notes-today",
+      "type": "numbered_list_item",
+      "html": "",
+      "text": "",
+      "position": 3
+    },
+    {
+      "id": "b-i1",
+      "pageId": "p-ideas",
+      "type": "heading1",
+      "html": "Idea inbox",
+      "text": "Idea inbox",
+      "position": 1
+    },
+    {
+      "id": "b-i2",
+      "pageId": "p-ideas",
+      "type": "paragraph",
+      "html": "Small sparks, half-formed thoughts, and things worth trying.",
+      "text": "Small sparks, half-formed thoughts, and things worth trying.",
+      "position": 2
+    },
+    {
+      "id": "b-i3",
+      "pageId": "p-ideas",
+      "type": "bulleted_list_item",
+      "html": "A daily page that writes itself from my calendar",
+      "text": "A daily page that writes itself from my calendar",
+      "position": 3
+    },
+    {
+      "id": "b-i4",
+      "pageId": "p-ideas",
+      "type": "bulleted_list_item",
+      "html": "A reading shelf that remembers what I highlighted",
+      "text": "A reading shelf that remembers what I highlighted",
+      "position": 4
+    },
+    {
+      "id": "b-i5",
+      "pageId": "p-ideas",
+      "type": "bulleted_list_item",
+      "html": "Little tools that remove friction instead of adding it",
+      "text": "Little tools that remove friction instead of adding it",
+      "position": 5
+    },
+    {
+      "id": "b-tm1",
+      "pageId": "p-tpl-meeting",
+      "type": "paragraph",
+      "html": "<em>Replace this with the meeting goal.</em>",
+      "text": "Replace this with the meeting goal.",
+      "position": 1
+    },
+    {
+      "id": "b-tm2",
+      "pageId": "p-tpl-meeting",
+      "type": "heading2",
+      "html": "Attendees",
+      "text": "Attendees",
+      "position": 2
+    },
+    {
+      "id": "b-tm3",
+      "pageId": "p-tpl-meeting",
+      "type": "bulleted_list_item",
+      "html": "",
+      "text": "",
+      "position": 3
+    },
+    {
+      "id": "b-tm4",
+      "pageId": "p-tpl-meeting",
+      "type": "heading2",
+      "html": "Agenda",
+      "text": "Agenda",
+      "position": 4
+    },
+    {
+      "id": "b-tm5",
+      "pageId": "p-tpl-meeting",
+      "type": "numbered_list_item",
+      "html": "",
+      "text": "",
+      "position": 5
+    },
+    {
+      "id": "b-tm6",
+      "pageId": "p-tpl-meeting",
+      "type": "heading2",
+      "html": "Notes",
+      "text": "Notes",
+      "position": 6
+    },
+    {
+      "id": "b-tm7",
+      "pageId": "p-tpl-meeting",
+      "type": "paragraph",
+      "html": "",
+      "text": "",
+      "position": 7
+    },
+    {
+      "id": "b-tm8",
+      "pageId": "p-tpl-meeting",
+      "type": "heading2",
+      "html": "Action items",
+      "text": "Action items",
+      "position": 8
+    },
+    {
+      "id": "b-tm9",
+      "pageId": "p-tpl-meeting",
+      "type": "to_do",
+      "html": "",
+      "text": "",
+      "props": { "checked": false },
+      "position": 9
+    },
+    {
+      "id": "b-tw1",
+      "pageId": "p-tpl-weekly",
+      "type": "heading1",
+      "html": "Weekly plan",
+      "text": "Weekly plan",
+      "position": 1
+    },
+    {
+      "id": "b-tw2",
+      "pageId": "p-tpl-weekly",
+      "type": "heading3",
+      "html": "Monday",
+      "text": "Monday",
+      "position": 2
+    },
+    {
+      "id": "b-tw3",
+      "pageId": "p-tpl-weekly",
+      "type": "to_do",
+      "html": "",
+      "text": "",
+      "props": { "checked": false },
+      "position": 3
+    },
+    {
+      "id": "b-tw4",
+      "pageId": "p-tpl-weekly",
+      "type": "heading3",
+      "html": "Tuesday",
+      "text": "Tuesday",
+      "position": 4
+    },
+    {
+      "id": "b-tw5",
+      "pageId": "p-tpl-weekly",
+      "type": "to_do",
+      "html": "",
+      "text": "",
+      "props": { "checked": false },
+      "position": 5
+    },
+    {
+      "id": "b-tw6",
+      "pageId": "p-tpl-weekly",
+      "type": "heading3",
+      "html": "Wednesday",
+      "text": "Wednesday",
+      "position": 6
+    },
+    {
+      "id": "b-tw7",
+      "pageId": "p-tpl-weekly",
+      "type": "to_do",
+      "html": "",
+      "text": "",
+      "props": { "checked": false },
+      "position": 7
+    },
+    {
+      "id": "b-tw8",
+      "pageId": "p-tpl-weekly",
+      "type": "heading3",
+      "html": "Thursday",
+      "text": "Thursday",
+      "position": 8
+    },
+    {
+      "id": "b-tw9",
+      "pageId": "p-tpl-weekly",
+      "type": "to_do",
+      "html": "",
+      "text": "",
+      "props": { "checked": false },
+      "position": 9
+    },
+    {
+      "id": "b-tw10",
+      "pageId": "p-tpl-weekly",
+      "type": "heading3",
+      "html": "Friday",
+      "text": "Friday",
+      "position": 10
+    },
+    {
+      "id": "b-tw11",
+      "pageId": "p-tpl-weekly",
+      "type": "to_do",
+      "html": "",
+      "text": "",
+      "props": { "checked": false },
+      "position": 11
+    },
+    {
+      "id": "b-th1",
+      "pageId": "p-tpl-habit",
+      "type": "heading1",
+      "html": "Habit tracker",
+      "text": "Habit tracker",
+      "position": 1
+    },
+    {
+      "id": "b-th2",
+      "pageId": "p-tpl-habit",
+      "type": "paragraph",
+      "html": "Small things, done often.",
+      "text": "Small things, done often.",
+      "position": 2
+    },
+    {
+      "id": "b-th3",
+      "pageId": "p-tpl-habit",
+      "type": "table",
+      "html": "",
+      "text": "Habit Mon Tue Wed Thu Fri Sat Sun",
+      "props": {
+        "header": true,
+        "rows": [
+          ["Habit", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+          ["Read 20 pages", "", "", "", "", "", "", ""],
+          ["Walk outside", "", "", "", "", "", "", ""],
+          ["No phone before 9am", "", "", "", "", "", "", ""]
+        ]
+      },
+      "position": 3
+    },
+    {
+      "id": "b-tj1",
+      "pageId": "p-tpl-journal",
+      "type": "callout",
+      "html": "How are you feeling today?",
+      "text": "How are you feeling today?",
+      "props": { "icon": "🌤️", "color": "default" },
+      "position": 1
+    },
+    {
+      "id": "b-tj2",
+      "pageId": "p-tpl-journal",
+      "type": "heading2",
+      "html": "Highlights",
+      "text": "Highlights",
+      "position": 2
+    },
+    {
+      "id": "b-tj3",
+      "pageId": "p-tpl-journal",
+      "type": "bulleted_list_item",
+      "html": "",
+      "text": "",
+      "position": 3
+    },
+    {
+      "id": "b-tj4",
+      "pageId": "p-tpl-journal",
+      "type": "heading2",
+      "html": "Gratitude",
+      "text": "Gratitude",
+      "position": 4
+    },
+    {
+      "id": "b-tj5",
+      "pageId": "p-tpl-journal",
+      "type": "numbered_list_item",
+      "html": "",
+      "text": "",
+      "position": 5
+    },
+    {
+      "id": "b-tp1",
+      "pageId": "p-tpl-project",
+      "type": "heading2",
+      "html": "Overview",
+      "text": "Overview",
+      "position": 1
+    },
+    {
+      "id": "b-tp2",
+      "pageId": "p-tpl-project",
+      "type": "paragraph",
+      "html": "What are we making, and why now?",
+      "text": "What are we making, and why now?",
+      "position": 2
+    },
+    {
+      "id": "b-tp3",
+      "pageId": "p-tpl-project",
+      "type": "heading2",
+      "html": "Goals",
+      "text": "Goals",
+      "position": 3
+    },
+    {
+      "id": "b-tp4",
+      "pageId": "p-tpl-project",
+      "type": "bulleted_list_item",
+      "html": "",
+      "text": "",
+      "position": 4
+    },
+    {
+      "id": "b-tp5",
+      "pageId": "p-tpl-project",
+      "type": "heading2",
+      "html": "Timeline",
+      "text": "Timeline",
+      "position": 5
+    },
+    {
+      "id": "b-tp6",
+      "pageId": "p-tpl-project",
+      "type": "paragraph",
+      "html": "",
+      "text": "",
+      "position": 6
+    },
+    {
+      "id": "b-tp7",
+      "pageId": "p-tpl-project",
+      "type": "heading2",
+      "html": "Risks",
+      "text": "Risks",
+      "position": 7
+    },
+    {
+      "id": "b-tp8",
+      "pageId": "p-tpl-project",
+      "type": "bulleted_list_item",
+      "html": "",
+      "text": "",
+      "position": 8
+    }
+  ],
+  "databases": [
+    {
+      "id": "db-todo",
+      "pageId": "p-todo",
+      "name": "To-Do List",
+      "properties": [
+        { "id": "title", "name": "Name", "type": "title" },
+        { "id": "status", "name": "Status", "type": "status", "options": [
+          { "id": "not_started", "name": "Not started", "color": "gray" },
+          { "id": "in_progress", "name": "In progress", "color": "blue" },
+          { "id": "done", "name": "Done", "color": "green" }
+        ]},
+        { "id": "priority", "name": "Priority", "type": "select", "options": [
+          { "id": "high", "name": "High", "color": "red" },
+          { "id": "medium", "name": "Medium", "color": "yellow" },
+          { "id": "low", "name": "Low", "color": "gray" }
+        ]},
+        { "id": "due", "name": "Due date", "type": "date" },
+        { "id": "notes", "name": "Notes", "type": "text" }
+      ],
+      "views": [
+        { "id": "todo-table", "name": "All tasks", "type": "table", "groupBy": null, "dateProperty": null, "filters": [], "sorts": [] },
+        { "id": "todo-board", "name": "Board", "type": "board", "groupBy": "status", "dateProperty": null, "filters": [], "sorts": [] },
+        { "id": "todo-calendar", "name": "Calendar", "type": "calendar", "groupBy": null, "dateProperty": "due", "filters": [], "sorts": [] }
+      ]
+    },
+    {
+      "id": "db-projects",
+      "pageId": "p-projects",
+      "name": "Projects",
+      "properties": [
+        { "id": "title", "name": "Project", "type": "title" },
+        { "id": "status", "name": "Status", "type": "status", "options": [
+          { "id": "planning", "name": "Planning", "color": "gray" },
+          { "id": "in_progress", "name": "In progress", "color": "blue" },
+          { "id": "in_review", "name": "In review", "color": "purple" },
+          { "id": "done", "name": "Done", "color": "green" }
+        ]},
+        { "id": "priority", "name": "Priority", "type": "select", "options": [
+          { "id": "high", "name": "High", "color": "red" },
+          { "id": "medium", "name": "Medium", "color": "yellow" },
+          { "id": "low", "name": "Low", "color": "gray" }
+        ]},
+        { "id": "owner", "name": "Owner", "type": "person" },
+        { "id": "timeline", "name": "Target date", "type": "date" },
+        { "id": "progress", "name": "Progress", "type": "number" }
+      ],
+      "views": [
+        { "id": "proj-board", "name": "Board", "type": "board", "groupBy": "status", "dateProperty": null, "filters": [], "sorts": [] },
+        { "id": "proj-table", "name": "All projects", "type": "table", "groupBy": null, "dateProperty": null, "filters": [], "sorts": [] },
+        { "id": "proj-calendar", "name": "Calendar", "type": "calendar", "groupBy": null, "dateProperty": "timeline", "filters": [], "sorts": [] }
+      ]
+    },
+    {
+      "id": "db-reading",
+      "pageId": "p-reading",
+      "name": "Reading List",
+      "properties": [
+        { "id": "title", "name": "Title", "type": "title" },
+        { "id": "author", "name": "Author", "type": "text" },
+        { "id": "status", "name": "Status", "type": "select", "options": [
+          { "id": "to_read", "name": "To read", "color": "gray" },
+          { "id": "reading", "name": "Reading", "color": "blue" },
+          { "id": "finished", "name": "Finished", "color": "green" }
+        ]},
+        { "id": "rating", "name": "Rating", "type": "number" },
+        { "id": "genre", "name": "Genre", "type": "select", "options": [
+          { "id": "design", "name": "Design", "color": "pink" },
+          { "id": "psychology", "name": "Psychology", "color": "purple" },
+          { "id": "software", "name": "Software", "color": "blue" },
+          { "id": "writing", "name": "Writing", "color": "orange" },
+          { "id": "architecture", "name": "Architecture", "color": "brown" }
+        ]},
+        { "id": "link", "name": "Link", "type": "url" }
+      ],
+      "views": [
+        { "id": "read-gallery", "name": "Gallery", "type": "gallery", "groupBy": null, "dateProperty": null, "filters": [], "sorts": [] },
+        { "id": "read-table", "name": "All books", "type": "table", "groupBy": null, "dateProperty": null, "filters": [], "sorts": [] }
+      ]
+    }
+  ],
+  "rows": [
+    { "id": "r-todo-1", "databaseId": "db-todo", "pageId": "p-row-todo-1", "values": { "title": "Welcome to IdeaCraft", "status": "done", "priority": "medium", "due": "2026-10-20", "notes": "Read the getting started guide" }, "position": 1 },
+    { "id": "r-todo-2", "databaseId": "db-todo", "pageId": "p-row-todo-2", "values": { "title": "Plan the week", "status": "in_progress", "priority": "high", "due": "2026-10-23", "notes": "Pick three outcomes" }, "position": 2 },
+    { "id": "r-todo-3", "databaseId": "db-todo", "pageId": "p-row-todo-3", "values": { "title": "Try the board view", "status": "not_started", "priority": "medium", "due": "", "notes": "" }, "position": 3 },
+    { "id": "r-todo-4", "databaseId": "db-todo", "pageId": "p-row-todo-4", "values": { "title": "Create a new database", "status": "not_started", "priority": "low", "due": "", "notes": "" }, "position": 4 },
+    { "id": "r-todo-5", "databaseId": "db-todo", "pageId": "p-row-todo-5", "values": { "title": "Set up local AI", "status": "not_started", "priority": "medium", "due": "", "notes": "Settings → AI → Ollama" }, "position": 5 },
+    { "id": "r-todo-6", "databaseId": "db-todo", "pageId": "p-row-todo-6", "values": { "title": "Export a page as Markdown", "status": "done", "priority": "low", "due": "", "notes": "" }, "position": 6 },
+    { "id": "r-proj-1", "databaseId": "db-projects", "pageId": "p-row-proj-1", "values": { "title": "IdeaCraft desktop", "status": "in_progress", "priority": "high", "owner": "You", "timeline": "2026-11-15", "progress": 72 }, "position": 1 },
+    { "id": "r-proj-2", "databaseId": "db-projects", "pageId": "p-row-proj-2", "values": { "title": "Personal website", "status": "planning", "priority": "medium", "owner": "You", "timeline": "2026-12-01", "progress": 20 }, "position": 2 },
+    { "id": "r-proj-3", "databaseId": "db-projects", "pageId": "p-row-proj-3", "values": { "title": "Reading habit", "status": "in_review", "priority": "low", "owner": "You", "timeline": "2026-10-30", "progress": 60 }, "position": 3 },
+    { "id": "r-proj-4", "databaseId": "db-projects", "pageId": "p-row-proj-4", "values": { "title": "Home automation", "status": "in_progress", "priority": "medium", "owner": "You", "timeline": "2027-01-10", "progress": 35 }, "position": 4 },
+    { "id": "r-read-1", "databaseId": "db-reading", "pageId": "p-row-read-1", "values": { "title": "The Design of Everyday Things", "author": "Don Norman", "status": "finished", "rating": 5, "genre": "design", "link": "https://en.wikipedia.org/wiki/The_Design_of_Everyday_Things" }, "position": 1 },
+    { "id": "r-read-2", "databaseId": "db-reading", "pageId": "p-row-read-2", "values": { "title": "Thinking, Fast and Slow", "author": "Daniel Kahneman", "status": "reading", "rating": 4, "genre": "psychology", "link": "" }, "position": 2 },
+    { "id": "r-read-3", "databaseId": "db-reading", "pageId": "p-row-read-3", "values": { "title": "The Pragmatic Programmer", "author": "Hunt & Thomas", "status": "to_read", "rating": 0, "genre": "software", "link": "" }, "position": 3 },
+    { "id": "r-read-4", "databaseId": "db-reading", "pageId": "p-row-read-4", "values": { "title": "Bird by Bird", "author": "Anne Lamott", "status": "to_read", "rating": 0, "genre": "writing", "link": "" }, "position": 4 },
+    { "id": "r-read-5", "databaseId": "db-reading", "pageId": "p-row-read-5", "values": { "title": "A Pattern Language", "author": "Christopher Alexander", "status": "reading", "rating": 5, "genre": "architecture", "link": "" }, "position": 5 }
+  ]
+}

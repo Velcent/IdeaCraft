@@ -1,0 +1,43 @@
+{
+  "name": "ideacraft",
+  "version": "1.0.0",
+  "description": "IdeaCraft - a local-first workspace for notes, docs and projects. Running this package downloads and silently installs the IdeaCraft desktop app for Windows, and adds an `ideacraft` command to launch it.",
+  "license": "MIT",
+  "bin": {
+    "ideacraft": "cli.js"
+  },
+  "scripts": {
+    "postinstall": "node install.js"
+  },
+  "keywords": [
+    "notes",
+    "workspace",
+    "local-first",
+    "knowledge-base",
+    "desktop",
+    "notion-alternative",
+    "ideacraft"
+  ],
+  "os": [
+    "win32"
+  ],
+  "cpu": [
+    "x64"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aamirenic/ideacraft.git"
+  },
+  "homepage": "https://github.com/aamirenic/ideacraft#readme",
+  "bugs": {
+    "url": "https://github.com/aamirenic/ideacraft/issues"
+  },
+  "files": [
+    "install.js",
+    "cli.js",
+    "README.md"
+  ]
+}
