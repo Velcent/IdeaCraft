@@ -165,6 +165,7 @@ canvas:focus-visible { outline-offset: -2px; }
 .sky-toggle:hover { background: var(--ink); color: var(--on-ink); border-color: var(--ink); }
 .sky-toggle[aria-pressed="true"] { background: var(--paper-2); }
 .sky-toggle svg { width: 20px; height: 20px; }
+.sky-toggle svg[hidden] { display: none; }
 
 .gh-mark { width: 17px; height: 17px; margin-right: 0.45rem; }
 

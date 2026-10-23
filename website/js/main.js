@@ -211,28 +211,44 @@
       scene.add(mesh);
     }
 
-    /* layout: pages hold the right half of the sky, deep enough to breathe */
+    /* layout: layered depth planes + lockstep drift = sheets overlap on screen
+       like layered paper, but their planes stay separated so they can never
+       pass *through* one another. */
+    var LAYER_PHASES = [0, 1.7, 3.4, 5.1, 0.85, 2.55];
     function assignHomes() {
       var wide = !isSmall.matches;
+      var layers = wide ? 4 : 5;
+      var cols = wide ? 3 : 2;
+      var perLayer = Math.ceil(pages.length / layers);
+      var rows = Math.ceil(perLayer / cols);
+      var cellW = wide ? 2.55 : 2.2;
+      var cellH = wide ? 2.65 : 2.5;
+      var layerGap = wide ? 1.15 : 0.8;
+      var x0 = wide ? 0.75 : -0.35;
       for (var i = 0; i < pages.length; i++) {
         var p = pages[i];
-        var ang = (i / pages.length) * Math.PI * 2 * 1.7 + 0.6;
-        var rr = 1.4 + ((i * 53) % 100) / 100 * 2.2;
-        var depth = 0.4 + ((i * 29) % 100) / 100 * 3.2;
-        var xw = wide ? 1.05 : 0.35;
-        p.userData.home.set(
-          xw + ((Math.cos(ang) + 1) / 2) * rr * 1.35,
-          (Math.sin(ang * 0.82) * rr) * 0.72,
-          -depth
+        var u = p.userData;
+        var layer = i % layers;
+        var slot = Math.floor(i / layers);
+        var col = slot % cols;
+        var row = Math.floor(slot / cols);
+        u.home.set(
+          x0 + col * cellW + (row % 2) * (cellW / 2) * 0.55,
+          (row - (rows - 1) / 2) * -cellH,
+          -(0.55 + layer * layerGap)
         );
-        p.userData.homeRot.set(
-          (Math.sin(i * 12.9898) * 0.5) * 0.24,
-          (Math.sin(i * 78.233) * 0.5) * 0.44,
-          (Math.sin(i * 43.211) * 0.5) * 0.1
+        /* constant tilts only: rotation.x/.y must never animate — animating
+           them would swing card corners out of their depth plane */
+        u.homeRot.set(
+          (Math.sin(i * 12.9898)) * 0.14,
+          (Math.sin(i * 78.233)) * 0.18,
+          (Math.sin(i * 43.211)) * 0.09
         );
-        if (i === 0) {
-          p.userData.home.set(wide ? 1.9 : 0.7, 0.25, -1.4);
-        }
+        /* lockstep drift: every card in a layer shares phase + speed, so
+           relative positions within a layer never change */
+        u.drift = LAYER_PHASES[layer % LAYER_PHASES.length];
+        u.driftSpeed = 0.3 + layer * 0.06;
+        p.scale.setScalar(wide ? 1 : 0.82);
       }
     }
     assignHomes();
@@ -427,11 +443,11 @@
           u.home.z + press * 0.5
         );
         if (!reduced) {
-          p.rotation.set(
-            u.homeRot.x + Math.sin(u.drift * 0.7) * 0.03,
-            u.homeRot.y + Math.cos(u.drift * 0.5) * 0.04,
-            u.homeRot.z
-          );
+          /* only rotation.z animates: it spins the sheet within its own
+             plane, which cannot move it into another depth layer */
+          p.rotation.z = u.homeRot.z + Math.sin(u.drift * 0.7) * 0.05;
+          p.rotation.x = u.homeRot.x;
+          p.rotation.y = u.homeRot.y;
         } else {
           p.rotation.copy(u.homeRot);
         }
