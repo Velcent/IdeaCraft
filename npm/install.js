@@ -24,7 +24,7 @@ const https = require('https');
 const os = require('os');
 const path = require('path');
 
-const REPO = process.env.IDEACRAFT_REPO || 'aamirenic/ideacraft';
+const REPO = process.env.IDEACRAFT_REPO || 'aamirenic/IdeaCraft';
 const PKG_VERSION = require('./package.json').version;
 const API = (v) => `https://api.github.com/repos/${REPO}/releases${v ? `/tags/v${v}` : '/latest'}`;
 

@@ -25,7 +25,7 @@ const conf = JSON.parse(fs.readFileSync(path.join(ROOT, 'src-tauri', 'tauri.conf
 const version = conf.version;
 const productName = conf.productName || 'IdeaCraft';
 
-const repo = process.env.IDEACRAFT_REPO || 'aamirenic/ideacraft';
+const repo = process.env.IDEACRAFT_REPO || 'aamirenic/IdeaCraft';
 const tag = process.env.IDEACRAFT_TAG || `v${version}`;
 const notes = process.env.IDEACRAFT_NOTES || `IdeaCraft ${version}`;
 

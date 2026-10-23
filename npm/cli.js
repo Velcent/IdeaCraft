@@ -13,7 +13,7 @@ const fs = require('fs');
 const os = require('os');
 const path = require('path');
 
-const REPO = process.env.IDEACRAFT_REPO || 'aamirenic/ideacraft';
+const REPO = process.env.IDEACRAFT_REPO || 'aamirenic/IdeaCraft';
 const PKG_VERSION = require('./package.json').version;
 
 function candidates() {

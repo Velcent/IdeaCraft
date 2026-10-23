@@ -32,7 +32,7 @@ The package also provides:
 
 ## Before publishing this package
 
-1. Make sure a GitHub Release exists at `aamirenic/ideacraft` with the asset
+1. Make sure a GitHub Release exists at `aamirenic/IdeaCraft` with the asset
    `IdeaCraft_<version>_x64-setup.exe` (produced by `npm run build` in the app
    repo). Otherwise the postinstall has nothing to download.
 2. Keep the version in sync with the app release you want npm users to get.

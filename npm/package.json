@@ -29,11 +29,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aamirenic/ideacraft.git"
+    "url": "git+https://github.com/aamirenic/IdeaCraft.git"
   },
-  "homepage": "https://github.com/aamirenic/ideacraft#readme",
+  "homepage": "https://github.com/aamirenic/IdeaCraft#readme",
   "bugs": {
-    "url": "https://github.com/aamirenic/ideacraft/issues"
+    "url": "https://github.com/aamirenic/IdeaCraft/issues"
   },
   "files": [
     "install.js",

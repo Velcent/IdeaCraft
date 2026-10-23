@@ -58,7 +58,7 @@
   "plugins": {
     "updater": {
       "endpoints": [
-        "https://github.com/aamirenic/ideacraft/releases/latest/download/latest.json"
+        "https://github.com/aamirenic/IdeaCraft/releases/latest/download/latest.json"
       ],
       "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDcxM0I0MzAzRTczMkZFOUQKUldTZC9qTG5BME03Y2Zxa0szOVQ1TngyUHVHYno2SWFPbEhQTmdyNGVOWmMyVllJbE9tWURpL3oK"
     }

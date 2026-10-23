@@ -48,7 +48,7 @@ The launcher package also supports:
 `npm install` when the app installer fails instead of warning).
 
 **Direct download:** grab `IdeaCraft_<version>_x64-setup.exe` from
-[GitHub Releases](https://github.com/aamirenic/ideacraft/releases) and run it
+[GitHub Releases](https://github.com/aamirenic/IdeaCraft/releases) and run it
 manually if you prefer not to use npm.
 
 > **SmartScreen note:** the app is not code-signed with a paid certificate yet, so Windows
@@ -67,7 +67,7 @@ manually if you prefer not to use npm.
 Prerequisites: [Rust](https://rustup.rs) 1.80+ and Node.js 18+.
 
 ```bash
-git clone https://github.com/aamirenic/ideacraft
+git clone https://github.com/aamirenic/IdeaCraft
 cd ideacraft
 npm install            # installs @tauri-apps/cli + playwright-core dev tooling
 npm run build          # = npx tauri build (release, embedded UI, NSIS bundle)
