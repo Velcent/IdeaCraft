@@ -541,6 +541,14 @@ html.no-webgl .hero::after {
   padding: 1.2rem 1.3rem 0.9rem;
   box-shadow: 8px 10px 0 color-mix(in srgb, var(--spark) 60%, transparent);
   overscroll-behavior: contain;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 220ms ease, transform 220ms ease;
+  pointer-events: none; /* the note never eats the follow-up click that releases focus */
+}
+.page-note.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 .page-note::before {
   content: "";
@@ -580,7 +588,7 @@ html.js [data-reveal] {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   html.js [data-reveal] { opacity: 1; transform: none; }
-  .btn, .copy-btn, .skip-link, .sky-toggle { transition: none; }
+  .btn, .copy-btn, .skip-link, .sky-toggle, .page-note { transition: none; }
   .terminal-body code::after { animation: none; }
 }
 

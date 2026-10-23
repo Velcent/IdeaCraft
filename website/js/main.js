@@ -297,7 +297,10 @@
     var parallax = { x: 0, y: 0, lerpX: 0, lerpY: 0 };
     var FOCUS_OFFSET = new THREE.Vector3(0.9, -0.55, -2.1);
     var FOCUS_TMP = new THREE.Vector3();
+    var TARGET_TMP = new THREE.Vector3();
     var FOCUS_ROT = new THREE.Euler(0, 0.15, -0.03);
+    var FOCUS_RELAX = 0.09;   /* glide toward the camera */
+    var RELAX = 0.115;        /* glide back to the sky slot */
     var note = document.getElementById("page-note");
     var noteTitle = document.getElementById("page-note-title");
     var noteBody = document.getElementById("page-note-body");
@@ -341,16 +344,24 @@
       return heroEl && (window.scrollY < heroHeight - 60);
     }
 
+    var noteTimer = 0;
     function focusPage(mesh) {
+      clearTimeout(noteTimer);
       focused = mesh;
       if (noteTitle) noteTitle.textContent = mesh.userData.feature.title;
       if (noteBody) noteBody.textContent = mesh.userData.feature.body;
-      if (note) note.hidden = false;
+      if (note) {
+        note.hidden = false;
+        requestAnimationFrame(function () { note.classList.add("show"); });
+      }
       document.body.style.cursor = "auto";
     }
     function releaseFocus() {
       focused = null;
-      if (note) note.hidden = true;
+      if (note && !note.hidden) {
+        note.classList.remove("show");
+        noteTimer = setTimeout(function () { note.hidden = true; }, 260);
+      }
       document.body.style.cursor = "auto";
     }
 
@@ -425,8 +436,11 @@
         if (p === focused) {
           /* brought to the light, just forward of camera */
           FOCUS_TMP.copy(FOCUS_OFFSET).applyMatrix4(camera.matrixWorld);
-          p.rotation.copy(FOCUS_ROT);
-          p.position.lerp(FOCUS_TMP, reduced ? 1 : 0.09);
+          p.position.lerp(FOCUS_TMP, reduced ? 1 : FOCUS_RELAX);
+          /* rotation relaxes the same way so releasing never snaps */
+          p.rotation.x += (FOCUS_ROT.x - p.rotation.x) * (reduced ? 1 : FOCUS_RELAX);
+          p.rotation.y += (FOCUS_ROT.y - p.rotation.y) * (reduced ? 1 : FOCUS_RELAX);
+          p.rotation.z += (FOCUS_ROT.z - p.rotation.z) * (reduced ? 1 : FOCUS_RELAX);
           continue;
         }
 
@@ -437,19 +451,21 @@
         }
         var press = u.hover;
 
-        p.position.set(
+        /* every page relaxes toward its slot, so a released page glides
+           home along the same easing it arrived with */
+        TARGET_TMP.set(
           u.home.x + Math.sin(u.drift) * 0.16,
           u.home.y + Math.cos(u.drift * 1.3) * 0.12 + press * 0.28,
           u.home.z + press * 0.5
         );
-        if (!reduced) {
-          /* only rotation.z animates: it spins the sheet within its own
-             plane, which cannot move it into another depth layer */
-          p.rotation.z = u.homeRot.z + Math.sin(u.drift * 0.7) * 0.05;
-          p.rotation.x = u.homeRot.x;
-          p.rotation.y = u.homeRot.y;
-        } else {
+        if (reduced) {
+          p.position.copy(TARGET_TMP);
           p.rotation.copy(u.homeRot);
+        } else {
+          p.position.lerp(TARGET_TMP, RELAX);
+          p.rotation.x += (u.homeRot.x - p.rotation.x) * RELAX;
+          p.rotation.y += (u.homeRot.y - p.rotation.y) * RELAX;
+          p.rotation.z += (u.homeRot.z + Math.sin(u.drift * 0.7) * 0.05 - p.rotation.z) * RELAX;
         }
       }
 
