@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>IdeaCraft — a local-first workspace for your ideas</title>
+  <meta name="description" content="IdeaCraft is a ~7 MB desktop workspace for notes, docs and projects. Block editor, search, templates, sync — all backed by a local SQLite database. Your ideas never leave your machine unless you say so." />
+  <meta property="og:title" content="IdeaCraft — a local-first workspace for your ideas" />
+  <meta property="og:description" content="Notes, docs and projects in a 7 MB desktop app. Your words live on your machine." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#f6f2e8" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='5' y='3' width='19' height='24' rx='2' fill='%23f6f2e8' stroke='%231a150c' stroke-width='2'/%3E%3Cpath d='M9 9h11M9 13h11M9 17h7' stroke='%231a150c' stroke-width='2' stroke-linecap='round'/%3E%3Ccircle cx='24' cy='7' r='3.2' fill='%23f5a300'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Fragment+Mono&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+    }
+  }
+  </script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script defer src="./js/main.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#top">Skip to content</a>
+
+  <canvas id="sky" aria-hidden="true"></canvas>
+  <noscript><p class="noscript-note">IdeaCraft&rsquo;s homepage uses JavaScript for its 3D scene; everything still reads without it. Install: <code>npm install -g ideacraft</code></p></noscript>
+
+  <header class="topbar">
+    <a class="wordmark" href="#top" aria-label="IdeaCraft home" translate="no">
+      <svg class="wordmark-mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="3" width="19" height="24" rx="2" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M10 10h9M10 15h9M10 20h6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><circle cx="24" cy="7.5" r="3.4" fill="var(--spark)"/></svg>
+      IdeaCraft
+    </a>
+    <nav class="topnav" aria-label="Primary">
+      <a href="#craft">What it does</a>
+      <a href="#local">Local-first</a>
+      <a href="#install">Install</a>
+      <button class="sky-toggle" id="sky-toggle" type="button" aria-pressed="false" aria-label="Pause the sky animation">
+        <svg class="mark-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.2 5.5v13M15.8 5.5v13" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg>
+        <svg class="mark-play" viewBox="0 0 24 24" aria-hidden="true" hidden><path d="M8 5.8v12.4L18.8 12Z" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+      </button>
+      <a class="gh-link" href="https://github.com/aamirenic/IdeaCraft" rel="noopener">
+        <svg viewBox="0 0 16 16" aria-hidden="true" class="gh-mark"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+        GitHub
+      </a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <!-- ============ HERO — pages float over paper sky ============ -->
+    <section class="hero" aria-label="Introduction">
+      <div class="hero-copy">
+        <p class="hero-kicker" data-reveal>A 7&nbsp;MB desktop workspace, reimagined in Rust</p>
+        <h1 class="hero-title" data-reveal>
+          <span class="line"><em>Write it down</em></span>
+          <span class="line">before the spark</span>
+          <span class="line">goes out.</span>
+        </h1>
+        <p class="hero-sub" data-reveal>
+          Notes, docs and projects in one quiet, local-first space.
+          Every page lives in a SQLite database <em>on your machine</em> —
+          not on someone else&rsquo;s cloud.
+        </p>
+        <div class="hero-cta" data-reveal>
+          <a class="btn btn-primary" href="#install">Install IdeaCraft</a>
+          <a class="btn btn-ghost" href="https://github.com/aamirenic/IdeaCraft/releases" rel="noopener">Download the installer</a>
+        </div>
+        <p class="hero-hint" data-reveal>
+          The pages floating in this sky are clickable — pick one up and read it.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ THE CRAFT — numbered editorial list ============ -->
+    <section class="chapter chapter-craft" id="craft" aria-label="What it does">
+      <header class="chapter-head">
+        <h2 class="chapter-title" data-reveal>Built like a tool,<br />not a feed.</h2>
+        <p class="chapter-sub" data-reveal>Everything below ships in the 7&nbsp;MB binary. No accounts, no telemetry, no subscription.</p>
+      </header>
+      <ol class="craft-list">
+        <li class="craft-item">
+          <span class="craft-num" aria-hidden="true">01</span>
+          <div class="craft-body">
+            <h3>Block editor with Markdown shortcuts</h3>
+            <p>Headings, lists, to-dos, quotes, code blocks and dividers — type <code>/</code> or Markdown and the block appears. Every page keeps its history, so a bad edit is never permanent.</p>
+          </div>
+        </li>
+        <li class="craft-item">
+          <span class="craft-num" aria-hidden="true">02</span>
+          <div class="craft-body">
+            <h3>Pages with icons, covers and favorites</h3>
+            <p>Give each page a face.</p>
+          </div>
+        </li>
+        <li class="craft-item">
+          <span class="craft-num" aria-hidden="true">03</span>
+          <div class="craft-body">
+            <h3>Full-text search and templates</h3>
+            <p>Find any sentence you ever typed, in any page, instantly. Start from a template when the blank page stares back.</p>
+          </div>
+        </li>
+        <li class="craft-item">
+          <span class="craft-num" aria-hidden="true">04</span>
+          <div class="craft-body">
+            <h3>Trash, history and comments</h3>
+            <p>Nothing vanishes by accident. Deleted pages rest in a trash you control; conversations stay pinned to the work.</p>
+          </div>
+        </li>
+        <li class="craft-item">
+          <span class="craft-num" aria-hidden="true">05</span>
+          <div class="craft-body">
+            <h3>Export, backup and a sync folder</h3>
+            <p>Export everything to file at any time, and carry the same workspace across devices with a folder you already trust.</p>
+          </div>
+        </li>
+        <li class="craft-item">
+          <span class="craft-num" aria-hidden="true">06</span>
+          <div class="craft-body">
+            <h3>Optional AI — yours, local</h3>
+            <p>Wire up a local Ollama endpoint and an assistant lives inside IdeaCraft. Off by default; it never phones home, because there is nowhere to call.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ============ LOCAL-FIRST ============ -->
+    <section class="chapter chapter-local" id="local" aria-label="Local-first">
+      <div class="local-grid">
+        <div class="local-copy">
+          <h2 class="chapter-title" data-reveal>Your words,<br />on your disk.</h2>
+          <p class="chapter-sub" data-reveal>
+            IdeaCraft stores every block you write in SQLite, under your own user
+            folder. If you reinstall it, the data stays. If you never go online,
+            nothing breaks.
+          </p>
+          <p class="chapter-sub">
+            Sync works the same way: point it at a folder of your choosing
+            (Dropbox, iCloud, a USB stick, a NAS) and the workspace travels with
+            whatever you trust.
+          </p>
+        </div>
+        <div class="local-facts" role="list" aria-label="Facts">
+          <div class="fact" role="listitem">
+            <span class="fact-num">100%</span>
+            <span class="fact-label">of data lives locally</span>
+          </div>
+          <div class="fact" role="listitem">
+            <span class="fact-num">0</span>
+            <span class="fact-label">servers, accounts or trackers</span>
+          </div>
+          <div class="fact" role="listitem">
+            <span class="fact-num">~7 MB</span>
+            <span class="fact-label">size of the whole app</span>
+          </div>
+          <div class="fact" role="listitem">
+            <span class="fact-num">MIT</span>
+            <span class="fact-label">license, source on GitHub</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ INSTALL ============ -->
+    <section class="chapter chapter-install" id="install" aria-label="Install">
+      <h2 class="chapter-title" data-reveal>One line, then you&rsquo;re in.</h2>
+      <div class="terminal" data-reveal role="region" aria-label="Install command">
+        <div class="terminal-bar" aria-hidden="true"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="terminal-name">your terminal</span></div>
+        <pre class="terminal-body"><code id="install-cmd" translate="no">npm install -g ideacraft</code></pre>
+        <button class="copy-btn" type="button" data-copy="install-cmd" aria-live="polite">Copy</button>
+      </div>
+      <p class="install-note">
+        Downloads the signed installer and installs silently for the current user —
+        Start Menu and Desktop shortcuts, no admin rights. Requires Windows&nbsp;10 (1809+) or 11.
+      </p>
+      <div class="install-alt">
+        <a class="btn btn-primary" href="https://github.com/aamirenic/IdeaCraft/releases/latest/download/IdeaCraft_1.0.0_x64-setup.exe" rel="noopener">Download IdeaCraft_1.0.0_x64-setup.exe</a>
+        <p class="install-note small">
+          Prefer the file? SmartScreen may ask on first run of an unsigned build —
+          choose <em>More info → Run anyway</em>.
+        </p>
+      </div>
+      <ol class="install-steps" aria-label="What the installer does">
+        <li><span>1</span>Fetch the 2.9&nbsp;MB installer from the GitHub release</li>
+        <li><span>2</span>Install to your user folder, create shortcuts</li>
+        <li><span>3</span>Open IdeaCraft — the workspace initializes its local database</li>
+      </ol>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <p class="footer-line">IdeaCraft is <a href="https://github.com/aamirenic/IdeaCraft" rel="noopener">free and open source</a> under the MIT license.</p>
+      <p class="footer-line dim">Built with Tauri, Rust and a local SQLite database. This site runs no analytics.</p>
+      <p class="footer-line desc">Draft a note. Keep it. It&rsquo;s yours.</p>
+    </div>
+  </footer>
+
+  <!-- Page-focus overlay: populated when a floating page is clicked -->
+  <div class="page-note" id="page-note" role="dialog" aria-modal="false" aria-labelledby="page-note-title" aria-live="polite" hidden>
+    <div class="page-note-inner">
+      <h2 id="page-note-title"></h2>
+      <p id="page-note-body"></p>
+      <p class="page-note-hint">press <kbd>Esc</kbd> or click elsewhere</p>
+    </div>
+  </div>
+</body>
+</html>
