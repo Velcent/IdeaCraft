@@ -75,6 +75,105 @@
   }
 
   /* ============================================================
+     THE LOOP — one sheet, four scenes, scrubbed by the scroll
+     ============================================================ */
+  var loopStageEl = document.querySelector(".loop-stage");
+  if (loopStageEl && gsapReady && !reducedMotion.matches) {
+    try {
+      gsap.registerPlugin(ScrollTrigger);
+      docEl.classList.add("loop-live");
+
+      var steps = gsap.utils.toArray(".loop-step");
+      gsap.set(steps, { autoAlpha: 0, y: 28 });
+      gsap.set(steps[0], { autoAlpha: 1, y: 0 });
+      gsap.set(".seg-keep, .seg-find, .seg-yours", { autoAlpha: 0 });
+      gsap.set(".mini-b", { autoAlpha: 0, xPercent: -34, rotation: -3, transformOrigin: "50% 50%" });
+      gsap.set([".ls-title", ".ls-rule"], { scaleX: 0, transformOrigin: "0 50%" });
+      gsap.set(".ls-rows .ln", { scaleX: 0, transformOrigin: "0 50%" });
+      gsap.set(".ls-rows .sq", { autoAlpha: 0 });
+      gsap.set(".spark-dot", { autoAlpha: 0, scale: 0.2 });
+      gsap.set(".cmdk-q i", { autoAlpha: 0 });
+      gsap.set(".cmdk-row .cr-bg", { scaleX: 0, transformOrigin: "0 50%" });
+      gsap.set(".cmdk-foot", { autoAlpha: 0 });
+      gsap.set(".loop-sheet", { transformOrigin: "40% 60%" });
+
+      var tl = gsap.timeline({
+        defaults: { ease: "power2.inOut" },
+        scrollTrigger: {
+          trigger: ".loop-stage",
+          start: "top top",
+          end: function () { return "+=" + Math.round(window.innerHeight * (isSmall.matches ? 2.3 : 2.9)); },
+          pin: true,
+          scrub: 0.65,
+          anticipatePin: 1,
+          invalidateOnRefresh: true
+        }
+      });
+
+      function railOn(n, at) {
+        tl.to(".rail-item[data-i='" + n + "'] .rail-dot",
+              { backgroundColor: "#f5a300", borderColor: "rgba(26,21,12,0)", duration: 0.08 }, at)
+          .to(".rail-item[data-i='" + n + "'] b",
+              { color: "#1a150c", duration: 0.08 }, at);
+      }
+      function copySwap(i, label) {
+        tl.to(steps[i], { autoAlpha: 0, y: -20, duration: 0.16 }, label)
+          .to(steps[i + 1], { autoAlpha: 1, y: 0, duration: 0.26 }, label + "+=0.08");
+      }
+
+      /* scene 01 — capture: ink writes itself onto the sheet */
+      tl.to(".ls-title", { scaleX: 1, duration: 0.14, ease: "power1.inOut" }, 0)
+        .to(".ls-rule", { scaleX: 1, duration: 0.10, ease: "power1.inOut" }, 0.12)
+        .to(".ls-rows .ln", { scaleX: 1, duration: 0.12, stagger: 0.04, ease: "power1.inOut" }, 0.18)
+        .to(".ls-rows .sq", { autoAlpha: 1, duration: 0.05, stagger: 0.05 }, 0.50)
+        .to(".spark-dot", { autoAlpha: 1, scale: 1, duration: 0.10, ease: "back.out(2.4)" }, 0.52);
+      railOn(1, 0.02);
+
+      /* scene 02 — keep: the stamp lands */
+      copySwap(0, 0.72);
+      tl.to(".seg-keep", { autoAlpha: 1, duration: 0.05 }, 0.74)
+        .fromTo(".stamp",
+          { autoAlpha: 0, scale: 1.45, rotation: -6 },
+          { autoAlpha: 1, scale: 1, rotation: -2.5, duration: 0.20, ease: "bounce.out" }, 0.76)
+        .to(".dbtag", { autoAlpha: 1, duration: 0.10 }, 0.96);
+      railOn(2, 0.74);
+
+      /* scene 03 — find: full-text search over the page */
+      copySwap(1, 1.34);
+      tl.fromTo(".seg-find",
+          { autoAlpha: 0, y: -80 },
+          { autoAlpha: 1, y: 0, duration: 0.22, ease: "power3.out" }, 1.36)
+        .to(".cmdk-q i", { autoAlpha: 1, duration: 0.015, stagger: 0.018, ease: "none" }, 1.50)
+        .to(".cmdk-row.hl .cr-bg", { scaleX: 1, duration: 0.14 }, 1.64)
+        .to(".cmdk-foot", { autoAlpha: 1, duration: 0.08 }, 1.80);
+      railOn(3, 1.36);
+
+      /* scene 04 — yours: a page peels off for your folder */
+      copySwap(2, 2.14);
+      tl.to(".seg-find", { autoAlpha: 0, y: -28, duration: 0.14 }, 2.14)
+        .to(".dbtag", { autoAlpha: 0.35, duration: 0.10 }, 2.24)
+        .to(".mini-b", { autoAlpha: 1, xPercent: 0, rotation: 3.5, duration: 0.26, ease: "power3.out" }, 2.18)
+        .to(".seg-yours", { autoAlpha: 1, duration: 0.04 }, 2.26)
+        .fromTo(".chip",
+          { autoAlpha: 0, scale: 0.7, rotation: -4 },
+          { autoAlpha: 1, scale: 1, rotation: 0, duration: 0.13, stagger: 0.06, ease: "back.out(1.9)" }, 2.30)
+        .fromTo(".export-row",
+          { autoAlpha: 0, y: 8 },
+          { autoAlpha: 1, y: 0, duration: 0.14, ease: "power1.out" }, 2.46);
+      railOn(4, 2.16);
+
+      /* settle — the finished page rests before the pin releases */
+      tl.to({}, { duration: 0.22 });
+    } catch (loopErr) {
+      docEl.classList.remove("loop-live");
+      /* back to the plain numbered list, nothing animated */
+      document.querySelectorAll(
+        ".loop-step, .ln, .ls-title, .ls-rule, .seg, .spark-dot, .mini-b, .chip, .export-row, .stamp, .dbtag, .cmdk-q i, .cr-bg, .cmdk-foot, .rail-dot, .rail-item b"
+      ).forEach(function (el) { el.removeAttribute("style"); });
+    }
+  }
+
+  /* ============================================================
      THE SKY
      ============================================================ */
   if (!hasWebGL) return;

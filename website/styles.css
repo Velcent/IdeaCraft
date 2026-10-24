@@ -557,6 +557,269 @@ html.no-webgl .hero::after {
   padding: 0 0.35em;
 }
 
+/* ---------- the loop — scroll-scrubbed passage ---------- */
+/* static fallback: an ordinary numbered chapter; art is decoration only */
+.loop-stage { margin-top: 2.5rem; }
+.loop-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: 62rem;
+}
+.loop-step {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap: 1.4rem;
+  padding: 2.1rem 0 1.9rem;
+  border-top: 1.5px solid var(--hairline);
+}
+.loop-step:first-child { border-top-color: var(--ink); }
+.step-num {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: var(--ink-muted);
+  padding-top: 0.35rem;
+  font-variant-numeric: tabular-nums;
+}
+.step-body h3 {
+  margin: 0 0 0.55rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.45rem;
+  letter-spacing: -0.01em;
+}
+.step-body p { margin: 0; max-width: 44rem; color: var(--ink-2); }
+.step-body code {
+  font-family: var(--font-mono);
+  font-size: 0.8em;
+  background: var(--paper-2);
+  padding: 0.1em 0.4em;
+  border-radius: 5px;
+}
+
+.loop-rail, .loop-art { display: none; }
+
+/* live (pinned) mode — enabled only when GSAP + motion are available */
+html.loop-live .chapter-loop { padding-left: 0; padding-right: 0; }
+html.loop-live .chapter-loop .chapter-head {
+  padding-left: max(var(--gutter), env(safe-area-inset-left));
+  padding-right: max(var(--gutter), env(safe-area-inset-right));
+}
+html.loop-live .loop-stage {
+  height: 100vh;
+  height: 100svh;
+  margin-top: 2.5rem;
+  display: grid;
+  /* column order follows the DOM: rail · art · copy */
+  grid-template-columns: minmax(3.2rem, 4rem) minmax(0, 0.95fr) minmax(0, 1.05fr);
+  align-items: center;
+  column-gap: clamp(1rem, 3.5vw, 3.5rem);
+  padding: 0 max(var(--gutter), env(safe-area-inset-right)) 0 max(var(--gutter), env(safe-area-inset-left));
+  position: relative;
+}
+html.loop-live .loop-rail { display: grid; gap: 1.15rem; align-self: center; }
+html.loop-live .rail-item { display: grid; grid-template-columns: auto auto; align-items: center; gap: 0.6rem; justify-content: start; }
+html.loop-live .rail-dot {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: var(--hairline);
+  border: 1px solid var(--ink-muted);
+}
+html.loop-live .rail-item b {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  white-space: nowrap;
+}
+html.loop-live .loop-art {
+  display: block;
+  position: relative;
+  height: 100%;
+  min-width: 0;
+  --sheet-w: min(20.5rem, 42vh);
+}
+html.loop-live .loop-steps { display: grid; height: 100%; }
+html.loop-live .loop-step {
+  display: block;
+  grid-area: 1 / 1;
+  align-self: center;
+  border-top: 0;
+  padding: 0;
+}
+html.loop-live .step-num {
+  display: block;
+  margin: 0 0 0.9rem;
+  padding: 0;
+  color: var(--spark-deep);
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+}
+html.loop-live .step-body h3 {
+  margin: 0 0 0.7rem;
+  font-size: clamp(1.7rem, 1.2vw + 1rem, 2.3rem);
+}
+html.loop-live .step-body p { margin: 0; max-width: 25rem; }
+
+/* the sheet */
+html.loop-live .loop-sheet {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--sheet-w);
+  aspect-ratio: 3 / 4;
+  transform: translate(-50%, -50%);
+  background: #fdfaf1;
+  border: 1.5px solid var(--ink);
+  border-radius: 12px;
+  box-shadow: 12px 14px 0 color-mix(in srgb, var(--spark) 58%, transparent), 15px 18px 0 rgba(26, 21, 12, 0.1);
+  padding: 7.5% 8%;
+  z-index: 2;
+}
+html.loop-live .ls-title { display: block; height: 12px; width: 58%; background: var(--ink); border-radius: 2px; }
+html.loop-live .ls-rule { display: block; height: 4px; width: 30%; background: var(--spark); border-radius: 2px; margin-top: 9px; }
+html.loop-live .ls-rows { display: grid; gap: 0.64rem; margin-top: 1.3rem; }
+html.loop-live .ls-row { display: flex; align-items: center; gap: 0.5rem; }
+html.loop-live .ln {
+  display: block;
+  height: 7px;
+  width: var(--w, 84%);
+  background: color-mix(in srgb, var(--ink) 86%, transparent);
+  border-radius: 2px;
+}
+html.loop-live .sq {
+  display: block;
+  width: 10px; height: 10px;
+  flex: none;
+  border: 1.5px solid var(--ink-2);
+  border-radius: 2px;
+}
+html.loop-live .spark-dot {
+  display: block;
+  width: 11px; height: 11px;
+  flex: none;
+  margin-left: 0.25rem;
+  background: var(--spark);
+  border-radius: 3px;
+  transform: rotate(45deg);
+}
+
+/* scene 02 — the stamp */
+html.loop-live .seg-keep {
+  position: absolute;
+  left: 8%;
+  bottom: 9%;
+  right: 8%;
+  display: grid;
+  gap: 0.5rem;
+  justify-items: start;
+}
+html.loop-live .stamp {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--spark-deep);
+  border: 2px solid var(--spark-deep);
+  border-radius: 6px;
+  padding: 0.42em 0.7em;
+  background: color-mix(in srgb, var(--paper) 55%, transparent);
+}
+html.loop-live .dbtag { font-family: var(--font-mono); font-size: 0.62rem; color: var(--ink-muted); }
+
+/* scene 03 — the search bar */
+html.loop-live .seg-find {
+  position: absolute;
+  top: 12%;
+  left: 10%;
+  width: min(23rem, 88%);
+  z-index: 3;
+}
+html.loop-live .cmdk {
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  border-radius: 12px;
+  box-shadow: 8px 10px 0 color-mix(in srgb, var(--spark) 58%, transparent);
+  padding: 0.8rem 0.9rem 0.7rem;
+  font-family: var(--font-mono);
+}
+html.loop-live .cmdk-bar {
+  display: flex;
+  align-items: baseline;
+  gap: 0.55rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1.5px solid var(--hairline);
+}
+html.loop-live .cmdk-label {
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+html.loop-live .cmdk-q { font-size: 0.85rem; color: var(--ink); white-space: nowrap; }
+html.loop-live .cmdk-q i { font-style: normal; }
+html.loop-live .cmdk-q::after { content: "▌"; color: var(--spark); }
+html.loop-live .cmdk-row {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  gap: 0.15rem;
+  padding: 0.55rem 0.55rem 0.5rem;
+  border-radius: 8px;
+  margin-top: 0.35rem;
+}
+html.loop-live .cr-bg {
+  position: absolute;
+  inset: 0;
+  background: var(--paper-2);
+  border-radius: 8px;
+  z-index: -1;
+}
+html.loop-live .cr-t { font-family: var(--font-display); font-weight: 500; font-size: 0.95rem; color: var(--ink); }
+html.loop-live .cr-m { font-size: 0.64rem; color: var(--ink-muted); }
+html.loop-live .cmdk-foot { margin-top: 0.55rem; font-size: 0.62rem; color: var(--ink-muted); }
+
+/* scene 04 — tags, export note, and the second page */
+html.loop-live .mini-b {
+  position: absolute;
+  top: 22%;
+  right: calc(50% - var(--sheet-w) * 0.72);
+  width: calc(var(--sheet-w) * 0.52);
+  aspect-ratio: 3 / 4;
+  background-color: #fdfaf1;
+  background-image: repeating-linear-gradient(180deg, rgba(26, 21, 12, 0.55) 0 5px, transparent 5px 20px);
+  background-size: 62% 40%;
+  background-position: 16% 14%;
+  background-repeat: no-repeat;
+  border: 1.5px solid var(--ink);
+  border-radius: 10px;
+  box-shadow: 8px 10px 0 color-mix(in srgb, var(--spark) 45%, transparent);
+  z-index: 1;
+}
+html.loop-live .seg-yours { position: absolute; inset: 0; pointer-events: none; }
+html.loop-live .chip {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
+  padding: 0.3em 0.75em;
+}
+html.loop-live .chip.c1 { right: 10%; bottom: 30%; }
+html.loop-live .chip.c2 { right: 4%; bottom: 22%; }
+html.loop-live .export-row {
+  position: absolute;
+  left: 8%;
+  bottom: 4.5%;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--ink-2);
+}
+
 /* ---------- reveal choreography (only when JS is present) ---------- */
 html.js [data-reveal] {
   opacity: 0;
@@ -591,4 +854,32 @@ html.js [data-reveal] {
   .craft-item { grid-template-columns: 1fr; gap: 0.4rem; padding: 1.7rem 0 1.5rem; }
   .hero-cta .btn { width: 100%; }
   .local-facts { grid-template-columns: 1fr 1fr; }
+}
+
+/* ---------- the loop: small screens ---------- */
+@media (max-width: 700px) {
+  html.loop-live .loop-stage {
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(0, 1fr) auto;
+    column-gap: 0;
+  }
+  html.loop-live .loop-rail { display: none; }
+  html.loop-live .loop-art {
+    grid-row: 1;
+    align-self: center;
+    --sheet-w: min(14rem, 34vh);
+  }
+  html.loop-live .loop-steps { grid-row: 2; padding-bottom: 1rem; }
+  html.loop-live .loop-step { align-self: end; padding-bottom: 0.4rem; }
+  html.loop-live .seg-find { top: 6%; left: 4%; width: calc(100% - 8%); }
+  html.loop-live .step-body p { font-size: 0.95rem; max-width: none; }
+  /* the small sheet has no room for the tag chips, the db tag,
+     or the stamp's long tail */
+  html.loop-live .chip, html.loop-live .dbtag { display: none; }
+  html.loop-live .stamp-tail { display: none; }
+  html.loop-live .stamp { font-size: 0.58rem; letter-spacing: 0.09em; }
+  /* the short sheet: stamp lifts into the empty middle band so the
+     export note has the bottom edge alone */
+  html.loop-live .seg-keep { bottom: 26%; }
+  html.loop-live .export-row { font-size: 0.6rem; bottom: 5.5%; }
 }
